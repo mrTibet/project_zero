@@ -8,17 +8,11 @@ let searchUser = document.getElementById('search');
 let searchBtn = document.getElementById('sbutton')
 let sdiv = document.body.querySelector('.showtime');
 //testing array
-let warehouseTwo = [{name:'Robert',lastname:'Polson',email:'robert@gmail.com'},
-{name:'Anet',lastname:'Grimjow',email:'grimmy@gmail.com'},
-{name:'Brittany',lastname:'Pat',email:'britpat@gmail.com'}];
+let warehouseTwo = [{username:'Robert',lastname:'Polson',usermail:'robert@gmail.com'},
+{username:'Anet',lastname:'Grimjow',usermail:'grimmy@gmail.com'},
+{username:'Brittany',lastname:'Pat',usermail:'britpat@gmail.com'}];
 
-/*при натисканні клавіши сабміт 
-функція створює обьект в середині массиву
- та додає туди необіхідні данні- виконано
- -додати строку для прізвищ -- done
- -зробити так щоб поле інпут очищалось після натискання сабміту -- done
- -колонка для відображення занотованого массиву
- -пошук занотованного та відображення його -- зробив
+/*
  -зберігання у локал сторадж
  -show list of all users
 тестові мила та імена
@@ -41,17 +35,43 @@ submitBtn.addEventListener('click',sendData)
 //find user function
 
 function findUser(){
-  for(let i = 0; i< warehouseTwo.length; i++){
-    if(warehouseTwo[i].name===searchUser.value || warehouseTwo[i].lastname===searchUser.value || warehouseTwo[i].email===searchUser.value){
-      console.log(warehouseTwo[i])
-      //-результати мають виводитись на екран, а не в консоль--done
-      //-вивід на екран має бути в лоігчному порядку
-      //-
-      for(key in warehouseTwo[i]){
-        sdiv.firstElementChild.insertAdjacentHTML("afterbegin",`<li>${key} : ${warehouseTwo[i][key]}</li>`)
+sdiv.firstElementChild.innerHTML = '';
+
+  if(warehouse.length>0){
+    
+//створив окрему змынну для функції пошуку об'єкта. вона повертає об'єкт і потім вираз перевіряє чи є результат об'єктом. і каже про це. 
+    let varil;
+    varil = searchInObject();
+
+    if(typeof(varil)==='object' ){
+      for(key in varil){
+        sdiv.firstElementChild.insertAdjacentHTML("afterbegin",`<li>${key} : ${varil[key]}</li>`)
       }
+    }else{
+      sdiv.firstElementChild.insertAdjacentHTML("afterbegin",'<li>no objects</li>')
+    }
+    /*for(let i = 0; i< warehouse.length; i++){
+      if(warehouse[i].username===searchUser.value || warehouse[i].lastname===searchUser.value || warehouse[i].usermail===searchUser.value){
+        console.log(warehouse[i])
+        for(key in warehouse[i]){
+          sdiv.firstElementChild.insertAdjacentHTML("afterbegin",`<li>${key} : ${warehouse[i][key]}</li>`)
+        }
+      }
+    }*/
+  }else{
+    sdiv.firstElementChild.insertAdjacentHTML("afterbegin",'<p>warehouse is empty</p>')
+    console.log('warehouse is empty')
+  }
+}
+
+function searchInObject(){
+  for(let i = 0; i< warehouse.length; i++){
+    if(warehouse[i].username===searchUser.value || warehouse[i].lastname===searchUser.value || warehouse[i].usermail===searchUser.value){
+      return warehouse[i]
     }
   }
 }
+
+
 
 searchBtn.addEventListener('click', findUser)
