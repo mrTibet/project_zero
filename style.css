@@ -1,3 +1,6 @@
+body {
+  font-family: 'Roboto Mono', monospace;
+}
 .main {
   display: flex;
   align-items: center;
@@ -6,7 +9,7 @@
   width: 85%;
   height: auto;
   margin: 0 auto;
-  border: black dotted 1px;
+  /*border: black dotted 1px;*/
 }
 .main-form{
   display: flex;
@@ -19,5 +22,19 @@
   width: 85%;
   height: 200px;
   margin: 0 auto;
-  border: black dotted 1px;
+  /*border: black dotted 1px;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.showtime ul li{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media only screen and (max-width:800px){
+  .main-form {
+    flex-direction: column-reverse;
+  }
 }

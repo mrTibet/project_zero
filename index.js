@@ -12,23 +12,14 @@ let warehouseTwo = [{username:'Robert',lastname:'Polson',usermail:'robert@gmail.
 {username:'Anet',lastname:'Grimjow',usermail:'grimmy@gmail.com'},
 {username:'Brittany',lastname:'Pat',usermail:'britpat@gmail.com'}];
 
-/*
- -зберігання у локал сторадж
- -show list of all users
-тестові мила та імена
-Robert Polson
-robert@gmail.com
---
-Anet Grimjow
-grimmy@gmail.com
---
-Brittany Pat
-britpat@gmail.com 
- */
+
+ 
+
+//creating of object
 function sendData(){
   let obj = {username: userName.value, lastname: userSurname.value, usermail:userEmail.value}
   warehouse.push(obj)
-  form.reset()
+  form.reset()//чистка полів форми
 }
 submitBtn.addEventListener('click',sendData)
 
@@ -39,7 +30,7 @@ sdiv.firstElementChild.innerHTML = '';
 
   if(warehouse.length>0){
     
-//створив окрему змынну для функції пошуку об'єкта. вона повертає об'єкт і потім вираз перевіряє чи є результат об'єктом. і каже про це. 
+//створив окрему змінну для функції пошуку об'єкта. вона повертає об'єкт і потім вираз перевіряє чи є результат об'єктом. і каже про це. 
     let varil;
     varil = searchInObject();
 
@@ -50,14 +41,7 @@ sdiv.firstElementChild.innerHTML = '';
     }else{
       sdiv.firstElementChild.insertAdjacentHTML("afterbegin",'<li>no objects</li>')
     }
-    /*for(let i = 0; i< warehouse.length; i++){
-      if(warehouse[i].username===searchUser.value || warehouse[i].lastname===searchUser.value || warehouse[i].usermail===searchUser.value){
-        console.log(warehouse[i])
-        for(key in warehouse[i]){
-          sdiv.firstElementChild.insertAdjacentHTML("afterbegin",`<li>${key} : ${warehouse[i][key]}</li>`)
-        }
-      }
-    }*/
+    
   }else{
     sdiv.firstElementChild.insertAdjacentHTML("afterbegin",'<p>warehouse is empty</p>')
     console.log('warehouse is empty')
@@ -74,4 +58,6 @@ function searchInObject(){
 
 
 
-searchBtn.addEventListener('click', findUser)
+searchBtn.addEventListener('click', findUser) 
+
+
